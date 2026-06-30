@@ -145,6 +145,8 @@ def wpm(entered: str, elapsed: int) -> float:
     assert elapsed > 0, "Elapsed time must be positive"
     # BEGIN PROBLEM 4
     "*** YOUR CODE HERE ***"
+    character_num = len(entered) / 5
+    return character_num / (elapsed / 60)
     # END PROBLEM 4
 
 
