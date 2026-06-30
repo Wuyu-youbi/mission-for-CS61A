@@ -68,6 +68,16 @@ def about(keywords: list[str]):
 
     # BEGIN PROBLEM 2
     "*** YOUR CODE HERE ***"
+    def select(paragraphs):
+        paragraphs = remove_punctuation(paragraphs)
+        if not type(paragraphs) == list:
+            handled_paragraphs = split(paragraphs)
+        for word in handled_paragraphs:
+            for keyword in keywords:
+                if lower(word) == keyword:
+                    return True
+        return False
+    return select
     # END PROBLEM 2
 
 
