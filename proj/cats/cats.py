@@ -40,11 +40,14 @@ def pick(paragraphs: list[str], select, k: int) -> str:
     "*** YOUR CODE HERE ***"
     i = 0
     select_true = []
+    # creat a new list to hold the true strings checked by select
+
     for paragraph in paragraphs:
         if select(paragraph):
             select_true.append(paragraph)
     if k >= len(select_true):
         return ''
+        # if there are fewer than K paragraphs in the new list, return an empty 
     else:
         return select_true[k]
 
@@ -69,9 +72,14 @@ def about(keywords: list[str]):
     # BEGIN PROBLEM 2
     "*** YOUR CODE HERE ***"
     def select(paragraphs):
-        paragraphs = remove_punctuation(paragraphs)
+        if type(paragraphs) == str:
+            paragraphs = remove_punctuation(paragraphs)
+        #remove punstuations of the paragraphs
+
         if not type(paragraphs) == list:
             handled_paragraphs = split(paragraphs)
+        #if paragraphs is not a list, turn it into a list
+
         for word in handled_paragraphs:
             for keyword in keywords:
                 if lower(word) == keyword:
