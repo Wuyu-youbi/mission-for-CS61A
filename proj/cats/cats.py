@@ -38,6 +38,16 @@ def pick(paragraphs: list[str], select, k: int) -> str:
     """
     # BEGIN PROBLEM 1
     "*** YOUR CODE HERE ***"
+    i = 0
+    select_true = []
+    for paragraph in paragraphs:
+        if select(paragraph):
+            select_true.append(paragraph)
+    if k >= len(select_true):
+        return ''
+    else:
+        return select_true[k]
+
     # END PROBLEM 1
 
 
