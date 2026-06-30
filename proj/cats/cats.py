@@ -116,6 +116,17 @@ def accuracy(entered: str, source: str) -> float:
     source_words = split(source)
     # BEGIN PROBLEM 3
     "*** YOUR CODE HERE ***"
+    matched_num = 0
+    length = min(len(entered_words), len(source_words))
+    if entered == '' and source == '':
+        return 100.0
+    elif entered == '' or source == '':
+        return 0.0
+    else:
+        for i in range(length):
+            if entered_words[i] == source_words[i]:
+                matched_num += 1
+        return (matched_num / len(entered_words)) * 100
     # END PROBLEM 3
 
 
