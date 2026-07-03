@@ -247,7 +247,18 @@ def furry_fixes(entered: str, source: str, limit: int) -> int:
     5
     """
     # BEGIN PROBLEM 6
-    assert False, 'Remove this line'
+    def furry_fixes_function(entered, source, limit, diff_so_far):
+        if diff_so_far + abs(len(entered) - len(source)) > limit:
+            return limit + 1
+        elif len(entered) == 0 or len(source) == 0:
+            return diff_so_far + abs(len(entered) - len(source))
+        else:   
+            if entered[0] != source[0]:
+                next_diff = diff_so_far + 1
+            else:
+                next_diff = diff_so_far
+        return furry_fixes_function(entered[1:], source[1:], limit, next_diff)
+    return furry_fixes_function(entered, source, limit, 0)
     # END PROBLEM 6
 
 
