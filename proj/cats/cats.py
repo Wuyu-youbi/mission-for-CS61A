@@ -208,6 +208,19 @@ def autocorrect(entered_word: str, word_list: list[str], diff_function, limit: i
     """
     # BEGIN PROBLEM 5
     "*** YOUR CODE HERE ***"
+    best_diff = diff_function(entered_word, word_list[0], limit)
+    best_word = word_list[0]
+    for word in word_list:
+        if entered_word == word:
+            return word
+        diff = diff_function(entered_word, word, limit)
+        if diff < best_diff:
+            best_diff = diff
+            best_word = word
+    if best_diff > limit:
+        return entered_word
+    else:
+        return best_word
     # END PROBLEM 5
 
 
