@@ -410,6 +410,14 @@ def fastest_words(words_and_times: dict) -> list[list[str]]:
     w_idxs = range(len(words))    # contains an *index* for each word
     # BEGIN PROBLEM 10
     "*** YOUR CODE HERE ***"
+    result = [[] for _ in pl_idxs]
+    for w in w_idxs:
+        best_pl = 0
+        for pl in pl_idxs:
+            if times[pl][w] < times[best_pl][w]:
+                best_pl = pl
+        result[best_pl].append(words[w])
+    return result
     # END PROBLEM 10
 
 
