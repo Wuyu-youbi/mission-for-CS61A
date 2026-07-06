@@ -381,8 +381,8 @@ def time_per_word(words: list[str], timestamps_per_player: list[list[int]]) -> d
     """
     ts_by_player = timestamps_per_player  # A shorter name (for convenience)
     # BEGIN PROBLEM 9
-    times = []  # You may remove this line
-    # END PROBLEM 9
+    times = [[ts[i+1] - ts[i] for i in range(len(ts)- 1)] for ts in ts_by_player]  # You may remove this line
+    # END PROBLEM 
     return {'words': words, 'times': times}
 
 
