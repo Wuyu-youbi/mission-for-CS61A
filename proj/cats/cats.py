@@ -348,6 +348,16 @@ def report_progress(entered: list[str], source: list[str], user_id: int, upload)
     """
     # BEGIN PROBLEM 8
     "*** YOUR CODE HERE ***"
+    finished_progress = 0
+    for i in range(len(entered)):
+        if entered[i] == source[i]:
+            finished_progress += 1
+        else:
+            break
+    rio = finished_progress / len(source)
+    dic = {'id': user_id, 'progress': rio}
+    upload(dic)
+    return rio
     # END PROBLEM 8
 
 
