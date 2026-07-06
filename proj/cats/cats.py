@@ -262,7 +262,7 @@ def furry_fixes(entered: str, source: str, limit: int) -> int:
     # END PROBLEM 6
 
 
-def minimum_mewtations(entered: str, source: str, limit: int) -> int:
+def minimum_mewtations(entered: str, source: str, limit: int, original_limit = 0) -> int:
     """A diff function for autocorrect that computes the edit distance from ENTERED to SOURCE.
     This function takes in a string ENTERED, a string SOURCE, and a number LIMIT.
 
@@ -279,22 +279,29 @@ def minimum_mewtations(entered: str, source: str, limit: int) -> int:
     >>> minimum_mewtations("ckiteus", "kittens", big_limit) # ckiteus -> kiteus -> kitteus -> kittens
     3
     """
-    assert False, 'Remove this line'
-    if ___________: # Base cases should go here, you may add more base cases as needed.
+    if original_limit == 0:
+        original_limit = limit
+        # 初始化original_limit以保存最初limit值
+    if len(entered) == 0 or len(source) == 0: # Base cases should go here, you may add more base cases as needed.
         # BEGIN
         "*** YOUR CODE HERE ***"
+        return abs(len(entered) - len(source))
         # END
+    if limit < 0:
+        return original_limit + 1
     # Recursive cases should go below here
-    if ___________: # Feel free to remove or add additional cases
+    if entered[0] == source[0]: # Feel free to remove or add additional cases
         # BEGIN
         "*** YOUR CODE HERE ***"
+        return 0 + minimum_mewtations(entered[1:], source[1:], limit, original_limit)
         # END
     else:
-        add = ... # Fill in these lines
-        remove = ...
-        substitute = ...
+        add = 1 + minimum_mewtations(entered, source[1:], limit - 1, original_limit) # Fill in these lines
+        remove = 1 + minimum_mewtations(entered[1:], source, limit - 1, original_limit)
+        substitute = 1 + minimum_mewtations(entered[1:], source[1:], limit - 1, original_limit)
         # BEGIN
-        "*** YOUR CODE HERE ***"
+        "*** YOUR CODE HERE ***"        
+        return min(add, remove, substitute)
         # END
 
 
