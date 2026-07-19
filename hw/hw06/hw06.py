@@ -129,6 +129,18 @@ def store_digits(n):
     >>> print("Do not use str or reversed!") if any([r in cleaned for r in ["str", "reversed"]]) else None
     """
     "*** YOUR CODE HERE ***"
+    digits = []
+    while n > 0:
+        digit, n = n % 10, n // 10
+        digits.append(digit)
+    
+    target_digits = digits[::-1]
+    def help_function(list):
+        if len(list) > 1:
+            return Link(list[0], help_function(list[1:]))
+        else:
+            return Link(list[0])
+    return help_function(target_digits)
 
 
 def deep_map_mut(func, s):
